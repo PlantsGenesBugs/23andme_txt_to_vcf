@@ -6,7 +6,7 @@ Many bioinformatics tools use .vcf files. This is simply data that is structured
 
 The 23andMe output file is plain .txt which makes it human-readable, even for someone with no bioinformatics skills. This is raw data with information on SNP calls for the individual, taken from an array with 600k SNPs. 23andMe also generate imputed data based on your own SNPs - this is available as individual chromosome-based bcf files. As far as I understand it, the imputation relies on the concept of linkage disequilibrium in haplotypes, and is generated through some statistical analysis. For the raw data, the reference human genome build 37 (GRCh37) is used. For the imputed data, the reference human genome build 38 (GRCh38) is used.
 
-In this repo you will find a bash script containing a function that will convert the 23andme .txt output with raw SNP data to a .vcf file for downstream applications. It has 3 associated flags:  
+In this repo you will find a bash script containing a function that will convert the raw SNP data in the 23andme .txt file to a .vcf file for downstream applications. It has 3 associated flags:  
 --input  : your individual .txt file
 --fasta  : the reference genome in .fa format 
 --out    : the name you want to give your output file (it will automatically be assigned a .vcf extension)

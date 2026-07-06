@@ -15,7 +15,7 @@ For each SNP in the raw 23andMe data, the associated reference allele is determi
 `if` SNP = REF `then` ALT = .   
 `if` SNP != REF  `then` ALT = SNP  
 
-The genotype (GT) is coded based on similarity between the SNP and the REF, such that:
+The genotype (GT) is coded based on similarity between the SNP and the REF, such that:  
 `if` SNP = REF `then` GT = 0   
 `if` SNP != REF `then` GT = 1 for first dissimilarity and GT = 2 for second dissimilarity   
 

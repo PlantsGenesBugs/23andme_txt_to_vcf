@@ -7,16 +7,16 @@ Many bioinformatics tools use .vcf files. This is simply data that is structured
 The 23andMe output file is plain .txt which makes it human-readable, even for someone with no bioinformatics skills. This is raw data with information on SNP calls for the individual, taken from an array with 600k SNPs. 23andMe also generate imputed data based on your own SNPs - this is available as individual chromosome-based bcf files. As far as I understand it, the imputation relies on the concept of linkage disequilibrium in haplotypes, and is generated through some statistical analysis. For the raw data, the reference human genome build 37 (GRCh37) is used. For the imputed data, the reference human genome build 38 (GRCh38) is used.
 
 In this repo you will find a bash script containing a function that will convert the raw SNP data in the 23andme .txt file to a .vcf file for downstream applications. It has 3 associated flags:  
---input  : your individual .txt file  
---fasta  : the reference genome in .fa format   
---out    : the name you want to give your output file (it will automatically be assigned a .vcf extension)  
+`--input`  : your individual .txt file  
+`--fasta`  : the reference genome in .fa format   
+`--out`    : the name you want to give your output file (it will automatically be assigned a .vcf extension)  
 
 For each SNP in the raw 23andMe data, the associated reference allele is determined in the reference genome using the `faidx` function from samtools. The alternative allele is populated relative to the 23andMe SNP such that:  
-SNP = REF      ALT = .  
-SNP != REF     ALT = SNP  
+`if` SNP = REF `then` ALT = .   
+`if` SNP != REF  `then` ALT = SNP  
 
 The genotype (GT) is coded based on similarity between the SNP and the REF, such that:
-SNP = REF      GT = 0  
-SNP != REF     GT = 1 for first dissimilarity and GT = 2 for second dissimilarity  
+`if` SNP = REF `then` GT = 0   
+`if` SNP != REF `then` GT = 1 for first dissimilarity and GT = 2 for second dissimilarity   
 
 The raw SNP data is NOT phased, so that a heterozygous SNP sharing one allele with the REF allele can be either 0/1 or 1/0.

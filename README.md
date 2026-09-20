@@ -12,7 +12,7 @@ The 23andMe output file is plain .txt which makes it human-readable, even for so
   - `--fasta`  : the reference genome in .fa format   
   - `--out`    : the name you want to give your output file (it will automatically be assigned a .vcf extension)  
 
-2. `Homo_sapiens.GRCh37.dna.primary_assembly.fa.fai` Index file relating to human genome build GRCh37 (hg19).  
+2. `Homo_sapiens.GRCh37.dna.primary_assembly.fa.fai` - index file relating to human genome build GRCh37 (hg19).  
 
 **PLEASE NOTE:** you will need the index (.fai) file of the related .fa reference file available to run this code without an error. To generate the index file, run `samtools faidx <file.fa>` in the directory where your reference human genome is stored. Then proceed to the script. If you are using the GRCh37 (hg19) version of the human genome (available through the Ensembl link below), I have included an index file in this repository, which you can download for ease of use. If you are using a different build, follow the steps below.  
 

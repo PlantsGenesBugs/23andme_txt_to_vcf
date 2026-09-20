@@ -8,9 +8,9 @@ The 23andMe output file is plain .txt which makes it human-readable, even for so
 
 ## Repo contents  
 1. `23andme_to_vcf_bash.sh` - a bash script containing a function that will convert the raw SNP data in a 23andme .txt file to a .vcf file for downstream applications. It has 3 associated flags:  
-- `--input`  : your individual .txt file  
-- `--fasta`  : the reference genome in .fa format   
-- `--out`    : the name you want to give your output file (it will automatically be assigned a .vcf extension)  
+  - `--input`  : your individual .txt file  
+  - `--fasta`  : the reference genome in .fa format   
+  - `--out`    : the name you want to give your output file (it will automatically be assigned a .vcf extension)  
 
 2. `Homo_sapiens.GRCh37.dna.primary_assembly.fa.fai` Index file relating to human genome build GRCh37 (hg19).  
 

@@ -8,17 +8,20 @@ The 23andMe output file is plain .txt which makes it human-readable, even for so
 
 **PLEASE NOTE:** you will need the index (.fai) file of the related .fa reference file available to run this code without an error. To generate the index file, FIRST run `samtools faidx <file.fa>` where you reference your human genome .fa ref file in <file.fa>. Then proceed to the script.  
 
-In this repo you will find a bash script containing a function that will convert the raw SNP data in the 23andme .txt file to a .vcf file for downstream applications. It has 3 associated flags:  
-`--input`  : your individual .txt file  
-`--fasta`  : the reference genome in .fa format   
-`--out`    : the name you want to give your output file (it will automatically be assigned a .vcf extension)  
+## Repo contents  
+`23andme_to_vcf_bash.sh` - a bash script containing a function that will convert the raw SNP data in a 23andme .txt file to a .vcf file for downstream applications. It has 3 associated flags:  
+- `--input`  : your individual .txt file  
+- `--fasta`  : the reference genome in .fa format   
+- `--out`    : the name you want to give your output file (it will automatically be assigned a .vcf extension)  
 
+## How the function determines reference and alternative alleles  
 For each SNP in the raw 23andMe data, the associated reference allele is determined in the reference genome using the `faidx` function from samtools. The alternative allele is populated relative to the 23andMe SNP such that:  
-`if` SNP = REF `then` ALT = .   
-`if` SNP != REF  `then` ALT = SNP  
+- `if` SNP = REF `then` ALT = .   
+- `if` SNP != REF  `then` ALT = SNP  
 
+## How the function codes values for the genotype column  
 The genotype (GT) is coded based on similarity between the SNP and the REF, such that:  
-`if` SNP = REF `then` GT = 0   
-`if` SNP != REF `then` GT = 1 for first dissimilarity and GT = 2 for second dissimilarity   
+- `if` SNP = REF `then` GT = 0   
+- `if` SNP != REF `then` GT = 1 for first dissimilarity and GT = 2 for second dissimilarity   
 
 The raw SNP data is NOT phased, so that a heterozygous SNP sharing one allele with the REF allele can be either 0/1 or 1/0.
